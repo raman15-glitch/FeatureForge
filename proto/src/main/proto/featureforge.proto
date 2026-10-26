@@ -1,12 +1,57 @@
 syntax = "proto3";
-
-package com.featureforge;
+package com.featureforge.proto;
 
 option java_multiple_files = true;
 option java_package = "com.featureforge.proto";
 
-message FeatureEvent {
+enum EventType {
+  EVENT_TYPE_UNSPECIFIED = 0;
+  VIEW = 1;
+  ADD_TO_CART = 2;
+  TRANSACTION = 3;
+}
+
+message RetailEvent {
   string event_id = 1;
-  int64 timestamp = 2;
-  string entity_id = 3;
+  int64 visitor_id = 2;
+  int64 item_id = 3;
+  EventType event_type = 4;
+  int64 event_time_ms = 5;
+  int64 available_at_ms = 6;
+  string transaction_id = 7;
+  int32 schema_version = 8;
+}
+
+message IngestRequest {
+  repeated RetailEvent events = 1;
+}
+
+message IngestResponse {
+  int32 accepted_count = 1;
+}
+
+enum ScoringMode {
+  FULL = 0;
+  DEGRADED = 1;
+}
+
+message ScoreRequest {
+  int64 visitor_id = 1;
+  int64 item_id = 2;
+  int64 request_time_ms = 3;
+}
+
+message ScoreResponse {
+  double score = 1;
+  ScoringMode mode = 2;
+  string reason = 3;
+  string model_version = 4;
+}
+
+service IngestService {
+  rpc PublishEvents(IngestRequest) returns (IngestResponse);
+}
+
+service ScoringService {
+  rpc ScoreView(ScoreRequest) returns (ScoreResponse);
 }
