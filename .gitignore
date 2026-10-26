@@ -1,0 +1,36 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Java / Compilation
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE & Editor files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+nbproject/
+
+# Logs
+*.log
+
+# OS & Environment
+.DS_Store
+Thumbs.db
+.env
+.env.local
+
+# Generated certificates & keys
+security/*.pem
+security/*.key
+security/*.crt
+security/*.csr

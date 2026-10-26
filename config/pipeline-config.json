@@ -1,0 +1,7 @@
+{
+  "pipeline": {
+    "name": "featureforge-pipeline",
+    "version": "1.0.0",
+    "environment": "development"
+  }
+}

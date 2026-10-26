@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.featureforge;
+
+option java_multiple_files = true;
+option java_package = "com.featureforge.proto";
+
+message FeatureEvent {
+  string event_id = 1;
+  int64 timestamp = 2;
+  string entity_id = 3;
+}
