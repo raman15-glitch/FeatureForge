@@ -1,7 +1,16 @@
 {
-  "pipeline": {
-    "name": "featureforge-pipeline",
-    "version": "1.0.0",
-    "environment": "development"
-  }
+  "featureSchemaVersion": 1,
+  "allowedLatenessMinutes": 10,
+  "labelWindowMinutes": 30,
+  "embargoMinutes": 30,
+  "replaySpeedupFactor": 1.0,
+  "seed": 42,
+  "priorSmoothingCandidates": [
+    1.0,
+    5.0,
+    10.0,
+    20.0,
+    50.0,
+    100.0
+  ]
 }
